@@ -1,0 +1,15 @@
+header {
+    height: 50vh;
+    display: flex;
+    gap:1rem;
+    padding: .25rem;
+}
+header img {
+    max-width: 30vw;
+}
+
+.card a {
+    position: absolute;
+    right:0;
+    top:0;
+}
