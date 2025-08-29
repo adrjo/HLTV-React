@@ -1,5 +1,8 @@
+import { BrowserRouter, Route, Routes } from "react-router";
 import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
+import { MainPage } from "./pages/MainPage";
+import { ForumPage } from "./pages/ForumPage";
 
 function App() {
 
@@ -10,10 +13,16 @@ function App() {
   };
 
   return (
-    <>
+    <BrowserRouter>
       <Header article={featuredArticle}/>
       <Navbar />
-    </>
+
+
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/forum" element={<ForumPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

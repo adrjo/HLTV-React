@@ -1,4 +1,4 @@
-@import "styles/Variables.css";
+@import "../src/styles/Variables.css";
 @import "tailwindcss";
 
 :root {
