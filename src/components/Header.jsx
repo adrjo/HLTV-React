@@ -2,13 +2,20 @@ import "../styles/Header.css"
 
 
 // Render featured article
-export function Header({article}) {
+export function Header({ article }) {
+    const handleReadMoreClick = () => {
+        window.location.href = "/article/" + article.id
+    };
+
+
     return (
-        <header>
-            <h1>{article.title}</h1>
-            <div className="card">
+        <header className="featured-article flex hover:cursor-pointer" onClick={handleReadMoreClick}>
+            <div className="flex-1/2 justify-center">
+                <h1>{article.title}</h1>
+                <button>Read More <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <div className="flex-1/2">
                 <img src={article.img} />
-                <a href={"article/" + article.id}>Read more</a>
             </div>
         </header>
     )

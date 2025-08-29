@@ -1,15 +1,21 @@
-header {
-    height: 50vh;
-    display: flex;
-    gap:1rem;
-    padding: .25rem;
-}
-header img {
-    max-width: 30vw;
-}
+@import "../styles/Variables.css";
 
-.card a {
-    position: absolute;
-    right:0;
-    top:0;
+.featured-article {
+    color: var(--text-primary);
+    margin: .5rem;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+    h1 {
+        font-weight: bold;
+        font-size: xxx-large;
+        text-transform: uppercase;
+    }
+
+    :hover button {
+        color: var(--text-secondary)
+    }
 }
