@@ -1,0 +1,14 @@
+@import "../styles/Variables.css";
+
+nav {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+
+    li {
+        padding:.25rem;
+        box-shadow: 1px 1px black;
+        &:hover {
+            background-color: var(--bg-primary);
+        }
+    }
+}
