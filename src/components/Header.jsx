@@ -12,7 +12,7 @@ export function Header({ article }) {
         <header className="featured-article flex hover:cursor-pointer" onClick={handleReadMoreClick}>
             <div className="flex-1/2 justify-center">
                 <h1>{article.title}</h1>
-                <h2>Read More <i class="fa-solid fa-arrow-right"></i></h2>
+                <h2>Read More <i className="fa-solid fa-arrow-right"></i></h2>
             </div>
             <div className="flex-1/2">
                 <img src={article.img} />

@@ -4,9 +4,8 @@ nav {
     background-color: var(--bg-secondary);
     padding: 1rem;
 
-    li {
-        padding:.25rem;
-        box-shadow: 1px 1px black;
+    a {
+        padding: 1rem;
         &:hover {
             background-color: var(--bg-primary);
         }

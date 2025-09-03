@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/Navbar";
 import "../styles/MainPage.css"
+import { NewsList } from "../components/NewsList";
+import { apiFetchNews } from "../api/news";
 
 const featuredArticle = {
   title: "Spirit win Blast Open London 2025",
@@ -9,10 +12,24 @@ const featuredArticle = {
 };
 
 export function MainPage() {
+  //TODO: select random featured article on reload?
+  const [article, setFeaturedArticle] = useState(featuredArticle);
+
+  const [news, setNews] = useState([]);
+  const [adminMode, setAdminMode] = useState(false);
+
+  useEffect(() => {
+    apiFetchNews().then(setNews);
+  }, [])
+
   return (
     <>
-      <Header article={featuredArticle} />
-      <Navbar />
+      <Header article={article} />
+      <Navbar adminModeToggled={adminMode} setAdminMode={setAdminMode}/>
+
+      
+      <NewsList news={news} adminMode={adminMode}/>
+
     </>
   )
 }
