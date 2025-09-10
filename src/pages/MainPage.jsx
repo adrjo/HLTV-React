@@ -3,7 +3,6 @@ import { Header } from "../components/Header";
 import { Navbar } from "../components/Navbar";
 import "../styles/MainPage.css"
 import { NewsList } from "../components/NewsList";
-import { apiFetchNews } from "../api/news";
 
 const featuredArticle = {
   title: "Spirit win Blast Open London 2025",
@@ -15,11 +14,6 @@ export function MainPage() {
   //TODO: select random featured article on reload?
   const [article, setFeaturedArticle] = useState(featuredArticle);
 
-  const [news, setNews] = useState([]);
-
-  useEffect(() => {
-    apiFetchNews().then(setNews);
-  }, [])
 
   return (
     <>
@@ -28,7 +22,6 @@ export function MainPage() {
 
       
       <NewsList news={news}/>
-
     </>
   )
 }

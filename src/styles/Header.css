@@ -15,7 +15,7 @@
         text-transform: uppercase;
     }
 
-    :hover h2 {
+    :hover {
         color: var(--text-secondary)
     }
 }
