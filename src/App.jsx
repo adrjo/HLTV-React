@@ -1,6 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { MainPage } from "./pages/MainPage";
 import { ForumPage } from "./pages/ForumPage";
+import { create } from "zustand";
+
+export const adminStore = create((set) => (
+  {
+    adminModeToggled: false,
+    toggleAdminMode: () => set((state) => ({ adminModeToggled: !state.adminModeToggled })),
+    setAdminMode: (isAdmin) => set((state) => ({ adminModeToggled: isAdmin }))
+  }
+))
 
 function App() {
   return (

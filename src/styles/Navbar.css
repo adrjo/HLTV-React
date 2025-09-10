@@ -8,6 +8,8 @@ nav {
         padding: 1rem;
         &:hover {
             background-color: var(--bg-primary);
+            transition: .25s ease;
         }
     }
+
 }

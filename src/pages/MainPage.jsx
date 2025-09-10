@@ -16,7 +16,6 @@ export function MainPage() {
   const [article, setFeaturedArticle] = useState(featuredArticle);
 
   const [news, setNews] = useState([]);
-  const [adminMode, setAdminMode] = useState(false);
 
   useEffect(() => {
     apiFetchNews().then(setNews);
@@ -25,10 +24,10 @@ export function MainPage() {
   return (
     <>
       <Header article={article} />
-      <Navbar adminModeToggled={adminMode} setAdminMode={setAdminMode}/>
+      <Navbar />
 
       
-      <NewsList news={news} adminMode={adminMode}/>
+      <NewsList news={news}/>
 
     </>
   )
