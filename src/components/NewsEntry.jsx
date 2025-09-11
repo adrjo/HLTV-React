@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import "../styles/NewsEntry.css"
 import { getElapsedTimeFormatted } from "../util/Util";
+import { Button } from "@headlessui/react";
 
 
 
@@ -16,16 +17,49 @@ export function NewsEntry({ entry, editable }) {
         formattedDate = dateObj.toLocaleTimeString(["sv"], { hour: '2-digit', minute: '2-digit' }); //format like "15:30"
     }
 
-    return (
-        <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
-            <h2 className="flex gap-1">
+    const editPost = () => {
+
+    };
+
+    const deletePost = () => {
+
+    };
+
+    const inner = (
+        <>
+            <h2 className="flex gap-3">
                 <i title={entry.flag.name}>{entry.flag.code}</i>
                 {entry.title}
+                {editable &&
+                    <>
+                        <Button title="Edit Post" onClick={editPost}>
+                            <i className="fa-solid fa-pen-to-square" />
+                        </Button>
+                        <Button title="Delete Post" onClick={deletePost}>
+                            <i className="fa-solid fa-xmark" />
+                        </Button>
+                    </>
+                }
             </h2>
             <div className="news-info m-auto mr-0 text-xs">
                 <div className="comments">5 comments</div>
                 <div className="date">{formattedDate}</div>
             </div>
-        </Link>
-    );
+        </>
+    )
+
+    // disable link when in editmode
+    if (editable) {
+        return (
+            <div className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+                {inner}
+            </div>
+        )
+    } else {
+        return (
+            <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+                {inner}
+            </Link>
+        )
+    }
 }
