@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "../styles/NewPostForm.css"
-import { Button, Input, Textarea } from "@headlessui/react";
+import { Button, Input, Select, Textarea } from "@headlessui/react";
 
 
 export function NewPostForm({ setShow }) {

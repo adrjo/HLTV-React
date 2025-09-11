@@ -7,11 +7,11 @@ export function NewsList({ news }) {
     const adminMode = adminStore((state) => state.adminModeToggled);
 
     return (
-        <div className="news">
+        <main className="news mr-1 mb-5 flex flex-col">
             {news.map((newsEntry) => (
                 <NewsEntry key={newsEntry.id} entry={newsEntry} editable={adminMode} />
             ))}
 
-        </div>
+        </main>
     )
 }

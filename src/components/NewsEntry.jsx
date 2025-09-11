@@ -1,22 +1,17 @@
 import { Link } from "react-router";
+import "../styles/NewsEntry.css"
+
+
 
 export function NewsEntry({ entry, editable }) {
+    const id = entry.id;
     return (
-        <div id="news-entry" className="flex items-center bg-amber-900 mb-1">
-            <Link to={`/news/${entry.id}`} className="flex-1-2">
-                <h2>{entry.title}</h2>
-            </Link>
-            <div className="flex">
-                <small>{entry.views}</small>
-                <small>{entry.likes}</small>
+        <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+            <h2>{entry.title}</h2>
+            <div className="news-info m-auto mr-0 text-xs">
+                <div className="comments">5 comments</div>
+                <div className="date">5 min ago</div>
             </div>
-
-            {editable && ( // TODO: icons for deleting/editing
-                <>
-                    <button>Delete</button>
-                    <button>Edit</button>
-                </>
-            )}
-        </div>
+        </Link>
     );
 }
