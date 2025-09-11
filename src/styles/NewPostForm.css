@@ -1,0 +1,25 @@
+.formed {
+    width:100%;
+    max-width: 30rem;
+    background-color:var(--bg-secondary);
+    text-align: center;
+    height:fit-content;
+    padding:3em;
+    position: fixed;
+    top:40%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1000;
+}
+
+.formed :nth-child(n) {
+    padding: 0.25rem;
+    margin: .25rem auto;
+
+    width: 100%;
+    max-width: 20rem;
+}
+
+.formed :not(button) {
+    background-color: var(--bg-primary);
+}
