@@ -1,6 +1,8 @@
 import { useState } from "react"
 import "../styles/NewPostForm.css"
 import { Button, Input, Select, Textarea } from "@headlessui/react";
+import { FlagSelect } from "./FlagSelect";
+import { Flag } from "../util/Flag.js";
 
 
 export function NewPostForm({ setShow }) {
@@ -13,6 +15,8 @@ export function NewPostForm({ setShow }) {
     const [imageText, setImageText] = useState("");
     const [content, setContent] = useState("");
 
+    const [flag, setFlag] = useState(Flag.WORLD);
+
 
     const submit = () => {
         console.log(title);
@@ -20,6 +24,7 @@ export function NewPostForm({ setShow }) {
         console.log(image);
         console.log(imageText);
         console.log(content);
+        console.log(flag);
 
     }
 
@@ -42,6 +47,7 @@ export function NewPostForm({ setShow }) {
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
                 />
+                <FlagSelect setFlag={setFlag} />
                 <Input
                     name="image"
                     type="text"

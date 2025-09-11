@@ -22,6 +22,7 @@ export function MainPage() {
     id: 0,
     author: "Testauthor",
     title: "Test",
+    flag: "🇸🇪",
     img: "https://img-cdn.hltv.org/gallerypicture/9-jXDp3QMajFwZ0YckD_qe.jpg?auto=compress&ixlib=java-2.1.0&q=75&s=a715c020af2fedf5dc2517c050b5b66f",
     imgText: "Test description",
     content: "Test content\nTest content line 2"
@@ -30,6 +31,7 @@ export function MainPage() {
     id: 2,
     author: "Testauthor",
     title: "Test2",
+    flag: "🇩🇰",
     img: "https://img-cdn.hltv.org/gallerypicture/9-jXDp3QMajFwZ0YckD_qe.jpg?auto=compress&ixlib=java-2.1.0&q=75&s=a715c020af2fedf5dc2517c050b5b66f",
     imgText: "Test description",
     content: "Test content\nTest content line 2"
