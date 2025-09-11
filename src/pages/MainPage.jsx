@@ -5,7 +5,8 @@ import "../styles/MainPage.css"
 import { NewsList } from "../components/NewsList";
 import { Button } from "@headlessui/react";
 import { NewPostForm } from "../components/NewPostForm";
-import { adminStore } from "../App";
+import { adminStore, postsStore } from "../App";
+import { getNewsFromStorage } from "../api/posts";
 
 const featuredArticle = {
   title: "Spirit win Blast Open London 2025",
@@ -18,33 +19,18 @@ export function MainPage() {
   const [article, setFeaturedArticle] = useState(featuredArticle);
   const adminMode = adminStore((state) => state.adminModeToggled);
 
-  const news = [{
-    id: 0,
-    author: "Testauthor",
-    title: "Test",
-    flag: "🇸🇪",
-    img: "https://img-cdn.hltv.org/gallerypicture/9-jXDp3QMajFwZ0YckD_qe.jpg?auto=compress&ixlib=java-2.1.0&q=75&s=a715c020af2fedf5dc2517c050b5b66f",
-    imgText: "Test description",
-    content: "Test content\nTest content line 2",
-    date: Date.now()
-  },
-{
-    id: 2,
-    author: "Testauthor",
-    title: "Test2",
-    flag: "🇩🇰",
-    img: "https://img-cdn.hltv.org/gallerypicture/9-jXDp3QMajFwZ0YckD_qe.jpg?auto=compress&ixlib=java-2.1.0&q=75&s=a715c020af2fedf5dc2517c050b5b66f",
-    imgText: "Test description",
-    content: "Test content\nTest content line 2",
-    date: Date.now()
-  }]
+  const posts = postsStore((state) => state.posts);
+  const setPosts = postsStore((state) => state.setPosts);
+
+  useEffect(() => {
+    setPosts(getNewsFromStorage());
+  }, [])
 
   const [show, setShow] = useState(false);
 
   const toggleShow = () => (
     setShow(!show)
   )
-
 
   return (
     <>
@@ -60,7 +46,7 @@ export function MainPage() {
         </Button>
       }
 
-      <NewsList news={news} />
+      <NewsList news={posts} />
     </>
   )
 }

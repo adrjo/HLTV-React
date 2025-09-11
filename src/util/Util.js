@@ -23,3 +23,11 @@ export function getElapsedTimeFormatted(timeSince) {
         return ret += " ago";
     }
 }
+
+/** returns true if any value is null/undefined */
+export function isNullOrEmpty(...values) {
+  for (let value of values) {
+    if (value == undefined || value.length == 0) return true;
+  }
+  return false;
+}

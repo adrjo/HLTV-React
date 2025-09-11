@@ -12,6 +12,20 @@ export const adminStore = create((set) => (
   }
 ))
 
+export const postsStore = create((set) => ({
+  posts: [],
+  setPosts: (posts) => set((state) => ({posts: posts})),
+  addPost: (post) => set((state) => ({
+    posts: [...state.posts, post]
+  })),
+  removePost: (id) => set((state) => ({
+    posts: state.posts.filter(p => p.id !== id)
+  })),
+  updatePost: (id, data) => set((state) => ({
+    posts: state.posts.map(p => p.id === id ? { ...p, ...data } : p)
+  }))
+}))
+
 function App() {
   return (
     <BrowserRouter>
