@@ -2,10 +2,13 @@ import { Link } from "react-router";
 import "../styles/NewsEntry.css"
 import { getElapsedTimeFormatted } from "../util/Util";
 import { Button } from "@headlessui/react";
+import { useState } from "react";
+import { NewPostForm } from "./NewPostForm";
 
 
 
 export function NewsEntry({ entry, editable }) {
+    const [showForm, setShow] = useState(false);
     const id = entry.id;
     const dateObj = new Date(entry.date);
 
@@ -18,7 +21,7 @@ export function NewsEntry({ entry, editable }) {
     }
 
     const editPost = () => {
-
+        setShow(true);
     };
 
     const deletePost = () => {
@@ -49,17 +52,21 @@ export function NewsEntry({ entry, editable }) {
     )
 
     // disable link when in editmode
-    if (editable) {
-        return (
-            <div className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
-                {inner}
-            </div>
-        )
-    } else {
-        return (
-            <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
-                {inner}
-            </Link>
-        )
-    }
+    return (
+        <>
+            {editable ? (
+                <div className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+                    {inner}
+                </div>
+            ) : (
+                <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+                    {inner}
+                </Link>
+            )}
+
+            {showForm && (
+                <NewPostForm setShow={setShow} post={entry} />
+            )}
+        </>
+    )
 }

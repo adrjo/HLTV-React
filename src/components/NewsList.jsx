@@ -8,7 +8,9 @@ export function NewsList({ news }) {
 
     return (
         <main className="news mr-1 mb-5 flex flex-col">
-            {news.map((newsEntry) => (
+            {news
+            .sort((a, b) => b.date - a.date) // newest posts first
+            .map((newsEntry) => (
                 <NewsEntry key={newsEntry.id} entry={newsEntry} editable={adminMode} />
             ))}
 

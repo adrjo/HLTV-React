@@ -1,14 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../styles/NewPostForm.css"
 import { Button, Input, Select, Textarea } from "@headlessui/react";
 import { FlagSelect } from "./FlagSelect";
 import { Flag } from "../util/Flag.js";
 import { isNullOrEmpty } from "../util/Util.js";
-import { savePost } from "../api/posts.js";
+import { savePostLocalStorage, updatePostLocalStorage } from "../api/posts.js";
 import { postsStore } from "../App.jsx";
 
 
-export function NewPostForm({ setShow }) {
+export function NewPostForm({ setShow, post }) {
     const toggleShow = () => (
         setShow(false)
     )
@@ -17,10 +17,30 @@ export function NewPostForm({ setShow }) {
     const [image, setImage] = useState("");
     const [imageText, setImageText] = useState("");
     const [content, setContent] = useState("");
-
     const [flag, setFlag] = useState(Flag.WORLD);
 
+    const [editing, setEditing] = useState(false);
+    let postId = null;
+    let postDate = null;
+    if (post != undefined) {
+        postId = post.id;
+        postDate = post.date;
+    }
+
     const addPost = postsStore((state) => state.addPost);
+    const updatePost = postsStore((state) => state.updatePost);
+
+    useEffect(() => {
+        if (post != undefined) {
+            setTitle(post.title);
+            setAuthor(post.author);
+            setImage(post.image);
+            setImageText(post.imageText);
+            setContent(post.content);
+            setFlag(post.flag);
+            setEditing(true);
+        }
+    }, [])
 
 
     const submit = (e) => {
@@ -31,6 +51,11 @@ export function NewPostForm({ setShow }) {
 
         let id = crypto.randomUUID();
         let date = Date.now();
+
+        if (editing) {
+            id = postId;
+            date = postDate;
+        }
 
         let post = {
             id: id,
@@ -43,16 +68,24 @@ export function NewPostForm({ setShow }) {
             date: date
         }
 
-        savePost(post);
-        addPost(post);
+        if (!editing) {
+            savePostLocalStorage(post);
+            addPost(post);
+        } else {
+            updatePostLocalStorage(post);
+            updatePost(post.id, post);
+        }
         toggleShow();
     }
+
 
     return (
         <>
             <div id="darken-bg" onClick={toggleShow} className="h-full w-full bg-[rgba(0,0,0,0.8)] fixed"></div>
             <form className="formed">
-                <h2>New Post</h2>
+                <h2>
+                    {editing ? (<>Editing "{title}"</>) : (<>New Post</>)}
+                </h2>
                 <Input
                     name="title"
                     type="text"
@@ -69,7 +102,7 @@ export function NewPostForm({ setShow }) {
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
                 />
-                <FlagSelect setFlag={setFlag} />
+                <FlagSelect flag={flag} setFlag={setFlag} />
                 <Input
                     name="image"
                     type="text"
