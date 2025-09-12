@@ -3,7 +3,7 @@ import "../styles/NewsEntry.css"
 import { getElapsedTimeFormatted } from "../util/Util";
 import { Button } from "@headlessui/react";
 import { useState } from "react";
-import { NewPostForm } from "./NewPostForm";
+import { NewPostForm } from "./PostForm";
 
 
 

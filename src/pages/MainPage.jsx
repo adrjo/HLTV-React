@@ -4,7 +4,7 @@ import { Navbar } from "../components/Navbar";
 import "../styles/MainPage.css"
 import { NewsList } from "../components/NewsList";
 import { Button } from "@headlessui/react";
-import { NewPostForm } from "../components/NewPostForm";
+import { NewPostForm } from "../components/PostForm";
 import { adminStore, postsStore } from "../App";
 import { getNewsFromStorage } from "../api/posts";
 

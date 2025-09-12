@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "../styles/NewPostForm.css"
 import { Button, Input, Select, Textarea } from "@headlessui/react";
-import { FlagSelect } from "./FlagSelect";
+import { FlagSelect } from "./FlagSelect.jsx";
 import { Flag } from "../util/Flag.js";
 import { isNullOrEmpty } from "../util/Util.js";
 import { savePostLocalStorage, updatePostLocalStorage } from "../api/posts.js";
