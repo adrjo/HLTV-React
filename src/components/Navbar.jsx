@@ -7,7 +7,7 @@ export function Navbar() {
     const toggleAdminMode = adminStore((state) => state.toggleAdminMode);
 
     return (
-        <nav className="flex">
+        <nav className="flex sticky top-0">
             <ul className="links flex-1/2 flex">
                 <li><a href="/">Home</a></li>
                 <li><a href="/forum">Forum</a></li>

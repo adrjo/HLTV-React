@@ -6,6 +6,7 @@ import { Flag } from "../util/Flag.js";
 import { isNullOrEmpty } from "../util/Util.js";
 import { savePostLocalStorage, updatePostLocalStorage } from "../api/posts.js";
 import { postsStore } from "../App.jsx";
+import { DarkBackground } from "./DarkBackground.jsx";
 
 
 export function NewPostForm({ setShow, post }) {
@@ -81,7 +82,7 @@ export function NewPostForm({ setShow, post }) {
 
     return (
         <>
-            <div id="darken-bg" onClick={toggleShow} className="h-full w-full bg-[rgba(0,0,0,0.8)] fixed"></div>
+            <DarkBackground toggle={toggleShow} />
             <form className="formed">
                 <h2>
                     {editing ? (<>Editing "{title}"</>) : (<>New Post</>)}

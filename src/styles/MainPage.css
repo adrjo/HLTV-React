@@ -1,0 +1,4 @@
+button:hover {
+    filter:opacity(.8);
+    cursor: pointer;
+}

@@ -34,7 +34,6 @@ export function MainPage() {
 
   return (
     <>
-      {show && <NewPostForm setShow={setShow}/>}
       <Header article={article} />
       <Navbar />
 
@@ -47,6 +46,8 @@ export function MainPage() {
       }
 
       <NewsList news={posts} />
+
+      {show && <NewPostForm setShow={setShow}/>}
     </>
   )
 }

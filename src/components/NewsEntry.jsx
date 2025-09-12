@@ -4,11 +4,13 @@ import { getElapsedTimeFormatted } from "../util/Util";
 import { Button } from "@headlessui/react";
 import { useState } from "react";
 import { NewPostForm } from "./PostForm";
+import { ConfirmScreen } from "./ConfirmScreen";
 
 
 
 export function NewsEntry({ entry, editable }) {
     const [showForm, setShow] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
     const id = entry.id;
     const dateObj = new Date(entry.date);
 
@@ -24,7 +26,9 @@ export function NewsEntry({ entry, editable }) {
         setShow(true);
     };
 
-    const deletePost = () => {
+    const deletePost = (e) => {
+        console.log("bye post!!!");
+        setShowConfirm(false);
 
     };
 
@@ -38,7 +42,7 @@ export function NewsEntry({ entry, editable }) {
                         <Button title="Edit Post" onClick={editPost}>
                             <i className="fa-solid fa-pen-to-square" />
                         </Button>
-                        <Button title="Delete Post" onClick={deletePost}>
+                        <Button title="Delete Post" onClick={() => setShowConfirm(true)}>
                             <i className="fa-solid fa-xmark" />
                         </Button>
                     </>
@@ -66,6 +70,10 @@ export function NewsEntry({ entry, editable }) {
 
             {showForm && (
                 <NewPostForm setShow={setShow} post={entry} />
+            )}
+
+            {showConfirm && (
+                <ConfirmScreen setShow={setShowConfirm} onSubmit={deletePost} title={entry.title} />
             )}
         </>
     )
