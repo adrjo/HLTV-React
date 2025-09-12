@@ -10,7 +10,8 @@ export function FlagSelect({ flag, setFlag }) {
     }
 
     return (
-        <Select name="flag" aria-label="flag" value={flag.code} onChange={(e) => selectFlag(e.target.value)}>
+        <Select name="flag" aria-label="flag" value={flag?.code ?? ""} onChange={(e) => selectFlag(e.target.value)}>
+            <option value="" disabled>-- Select a flag --</option>
             {Object.values(Flag).map((f) => (
                 <option key={f.code} value={f.code}>{f.code + " " + f.name}</option>
             ))}
