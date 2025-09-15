@@ -13,13 +13,13 @@ function savePosts(posts) {
 }
 
 export function updatePostLocalStorage(post) {
-    removePostLocalStorage(post);
+    removePostLocalStorage(post.id);
     savePostLocalStorage(post);
 }
 
-export function removePostLocalStorage(post) {
+export function removePostLocalStorage(id) {
     let posts = getNewsFromStorage();
-    posts = posts.filter(p => p.id != post.id);
+    posts = posts.filter(p => p.id != id);
     savePosts(posts);
     // todo: remove post comments
     //removePostComments(post.id);

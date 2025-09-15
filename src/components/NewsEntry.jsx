@@ -5,12 +5,16 @@ import { Button } from "@headlessui/react";
 import { useState } from "react";
 import { NewPostForm } from "./PostForm";
 import { ConfirmScreen } from "./ConfirmScreen";
+import { postsStore } from "../App";
+import { removePostLocalStorage } from "../api/posts";
 
 
 
 export function NewsEntry({ entry, editable }) {
     const [showForm, setShow] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
+    const removePost = postsStore((state) => state.removePost);
+
     const id = entry.id;
     const dateObj = new Date(entry.date);
 
@@ -26,10 +30,12 @@ export function NewsEntry({ entry, editable }) {
         setShow(true);
     };
 
-    const deletePost = (e) => {
-        console.log("bye post!!!");
+    const deletePost = () => {
+        console.log("Deleting post, id=" + entry.id);
         setShowConfirm(false);
 
+        removePost(entry.id);
+        removePostLocalStorage(entry.id);
     };
 
     const inner = (
