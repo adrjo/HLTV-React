@@ -10,26 +10,32 @@
         flex: calc(1/2 * 100%);
     }
 
+    /* remove border if the next sibling is a h3 */
+    &:has(+ h3) {
+        border: none;
+    }
+
     &:last-child {
         border: none;
     }
+
     &:hover {
         filter: opacity(.8);
         transition: .25s ease;
     }
 
     button:hover {
-        cursor:pointer;
+        cursor: pointer;
     }
 }
 
 
 .fa-xmark:hover {
-    color:red;
+    color: red;
 }
 
 .fa-pen-to-square:hover {
-    color:#1b1f23;
+    color: #1b1f23;
 }
 
 
