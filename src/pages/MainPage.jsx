@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/Navbar";
 import "../styles/MainPage.css"
@@ -7,6 +7,7 @@ import { Button } from "@headlessui/react";
 import { NewPostForm } from "../components/PostForm";
 import { adminStore, postsStore, toastsStore } from "../App";
 import { Toasts } from "../components/Toasts";
+import { getRandomNumber } from "../util/Util";
 
 const featuredArticle = {
   title: "Spirit win Blast Open London 2025",
@@ -15,7 +16,6 @@ const featuredArticle = {
 };
 
 export function MainPage() {
-  //TODO: select random featured article on reload?
   const [article, setFeaturedArticle] = useState(featuredArticle);
   const adminMode = adminStore((state) => state.adminModeToggled);
 
@@ -28,6 +28,15 @@ export function MainPage() {
   const toggleShow = () => (
     setShow(!show)
   )
+
+  const weekMs = 7 * 24 * 60 * 60 * 1000;
+  useEffect(() => {
+    let options = posts
+      .filter(post => post.img != undefined && post.img != "")
+      .filter(post => Date.now() - post.date < weekMs); // featured article shouldnt be too old
+
+    setFeaturedArticle(options[getRandomNumber(0, options.length - 1)]);
+  }, [])
 
   return (
     <>
@@ -45,7 +54,7 @@ export function MainPage() {
       <NewsList news={posts} />
       <Toasts toasts={toasts} />
 
-      {show && <NewPostForm setShow={setShow}/>}
+      {show && <NewPostForm setShow={setShow} />}
     </>
   )
 }
