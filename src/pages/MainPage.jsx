@@ -35,7 +35,9 @@ export function MainPage() {
       .filter(post => post.img != undefined && post.img != "")
       .filter(post => Date.now() - post.date < weekMs); // featured article shouldnt be too old
 
-    setFeaturedArticle(options[getRandomNumber(0, options.length - 1)]);
+    if (options.length != 0) {
+      setFeaturedArticle(options[getRandomNumber(0, options.length - 1)]);
+    }
   }, [])
 
   return (

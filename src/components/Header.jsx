@@ -3,6 +3,10 @@ import "../styles/Header.css"
 
 // Render featured article
 export function Header({ article }) {
+    if (!article) {
+        return;
+    }
+    
     const handleReadMoreClick = () => {
         window.location.href = "/article/" + article.id
     };
