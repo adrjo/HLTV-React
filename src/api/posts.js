@@ -24,3 +24,40 @@ export function removePostLocalStorage(id) {
     // todo: remove post comments
     //removePostComments(post.id);
 }
+
+function getAllLikes() {
+    return JSON.parse(localStorage.getItem("likes")) || [];
+}
+
+export function setLikesStorage(articleId, amount) {
+    let likes = getAllLikes().filter(like => like.articleId != articleId);
+
+    let articleLikes = getLikeObj(articleId);
+    articleLikes.amount = amount;
+    likes.push(articleLikes);
+    saveLikes(likes);
+}
+
+export function removeLikeObj(articleId) {
+    let allLikes = getAllLikes() || [];
+    allLikes.filter((l) => l.articleId != articleId);
+    saveLikes(allLikes);
+}
+
+function saveLikes(likes) {
+    localStorage.setItem("likes", JSON.stringify(likes));
+}
+
+export function getLikeObj(articleId) {
+    const emptyObj = {
+            articleId: articleId,
+            amount: 0
+        };
+    let allLikes = getAllLikes() || [];
+    if (allLikes.length == 0) {
+        return emptyObj;
+    }
+
+    return allLikes.find(like => like.articleId == articleId) || emptyObj;
+}
+

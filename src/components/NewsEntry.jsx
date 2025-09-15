@@ -67,11 +67,11 @@ export function NewsEntry({ entry, editable }) {
     return (
         <>
             {editable ? (
-                <div className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+                <div className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs">
                     {inner}
                 </div>
             ) : (
-                <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs mb-0.5">
+                <Link to={`/article/${id}`} className="news-button bg-gray-700 flex gap-2 items-center shadow-2xs">
                     {inner}
                 </Link>
             )}

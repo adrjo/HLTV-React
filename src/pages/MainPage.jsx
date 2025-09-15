@@ -37,7 +37,7 @@ export function MainPage() {
       {adminMode &&
         <Button
           onClick={toggleShow}
-          className="bg-green-400 m-5 p-3 text-black">
+          className="bg-green-500 m-5 p-3 text-black">
           New Post
         </Button>
       }
