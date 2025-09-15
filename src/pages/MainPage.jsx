@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/Navbar";
 import "../styles/MainPage.css"
@@ -6,7 +6,6 @@ import { NewsList } from "../components/NewsList";
 import { Button } from "@headlessui/react";
 import { NewPostForm } from "../components/PostForm";
 import { adminStore, postsStore, toastsStore } from "../App";
-import { getNewsFromStorage } from "../api/posts";
 import { Toasts } from "../components/Toasts";
 
 const featuredArticle = {
@@ -21,13 +20,8 @@ export function MainPage() {
   const adminMode = adminStore((state) => state.adminModeToggled);
 
   const posts = postsStore((state) => state.posts);
-  const setPosts = postsStore((state) => state.setPosts);
 
   const toasts = toastsStore((state) => state.toasts);
-
-  useEffect(() => {
-    setPosts(getNewsFromStorage());
-  }, [])
 
   const [show, setShow] = useState(false);
 

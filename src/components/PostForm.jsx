@@ -35,8 +35,8 @@ export function NewPostForm({ setShow, post }) {
         if (post != undefined) {
             setTitle(post.title);
             setAuthor(post.author);
-            setImage(post.image);
-            setImageText(post.imageText);
+            setImage(post.img);
+            setImageText(post.imgText);
             setContent(post.content);
             setFlag(post.flag);
             setEditing(true);

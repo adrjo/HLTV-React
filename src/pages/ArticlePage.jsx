@@ -2,32 +2,30 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { apiFetchComments } from "../api/comments";
 import { getRandomNumber } from "../util/Util";
+import { postsStore } from "../App";
+import { Navbar } from "../components/Navbar";
+import { Article } from "../components/Article";
 
 export function ArticlePage() {
-    const [comments, setComments] = useState([]);
-
-    useEffect(() => {
-        apiFetchComments(getRandomNumber(1,10)).then(setComments);
-        console.log(comments)
-    }, [])
-
     const { id } = useParams();
 
-    if (comments.length == 0) {
-        return "Loading comments...";
-    }
+    const getPost = postsStore((state) => state.getPost);
+    const [post, setPost] = useState(null);
+
+    const [comments, setComments] = useState([]);
+
+
+    useEffect(() => {
+        apiFetchComments(getRandomNumber(1, 10)).then(setComments);
+
+        setPost((getPost(id)));
+    }, [])
 
     return (
         <>
-            {id}
+            <Navbar />
 
-            {comments.map((comment) => (
-                <div key={comment.id}>
-                    {comment.user.username}
-                    {comment.body}
-                </div>
-            ))}
-
+            {post ? <Article article={post} /> : <p>Loading article...</p>}
         </>
     )
 }

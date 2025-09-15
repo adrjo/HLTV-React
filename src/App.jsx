@@ -3,6 +3,8 @@ import { MainPage } from "./pages/MainPage";
 import { ForumPage } from "./pages/ForumPage";
 import { create } from "zustand";
 import { ArticlePage } from "./pages/ArticlePage";
+import { useEffect } from "react";
+import { getNewsFromStorage } from "./api/posts";
 
 export const adminStore = create((set) => (
   {
@@ -12,9 +14,10 @@ export const adminStore = create((set) => (
   }
 ))
 
-export const postsStore = create((set) => ({
-  posts: [],
-  setPosts: (posts) => set((state) => ({posts: posts})),
+export const postsStore = create((set, get) => ({
+  posts: getNewsFromStorage(),
+  getPost: (id) => get().posts.find(post => post.id == id),
+  setPosts: (posts) => set((state) => ({ posts: posts })),
   addPost: (post) => set((state) => ({
     posts: [...state.posts, post]
   })),
