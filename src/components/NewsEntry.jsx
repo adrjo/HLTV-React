@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import "../styles/NewsEntry.css"
-import { getElapsedTimeFormatted } from "../util/Util";
+import { displayToast, getElapsedTimeFormatted } from "../util/Util";
 import { Button } from "@headlessui/react";
 import { useState } from "react";
 import { NewPostForm } from "./PostForm";
@@ -36,6 +36,8 @@ export function NewsEntry({ entry, editable }) {
 
         removePost(entry.id);
         removePostLocalStorage(entry.id);
+
+        displayToast(`Deleted "${entry.title}" successfully`);
     };
 
     const inner = (

@@ -26,6 +26,16 @@ export const postsStore = create((set) => ({
   }))
 }))
 
+export const toastsStore = create((set) => ({
+  toasts: [],
+  addToast: (toast) => set((state) => ({
+    toasts: [...state.toasts, toast]
+  })),
+  removeToast: (id) => set((state) => ({
+    toasts: state.toasts.filter(t => t.id !== id)
+  })),
+}))
+
 function App() {
   return (
     <BrowserRouter>

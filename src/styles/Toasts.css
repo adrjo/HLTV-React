@@ -1,0 +1,15 @@
+.toastsContainer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: fit-content;
+    margin: 2px;
+}
+
+.toastsContainer>div {
+    padding: 2rem;
+    margin-top: .25rem;
+    background-color: #364153;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

@@ -3,7 +3,7 @@ import "../styles/NewPostForm.css"
 import { Button, Input, Select, Textarea } from "@headlessui/react";
 import { FlagSelect } from "./FlagSelect.jsx";
 import { Flag } from "../util/Flag.js";
-import { isNullOrEmpty } from "../util/Util.js";
+import { displayToast, isNullOrEmpty } from "../util/Util.js";
 import { savePostLocalStorage, updatePostLocalStorage } from "../api/posts.js";
 import { postsStore } from "../App.jsx";
 import { DarkBackground } from "./DarkBackground.jsx";
@@ -72,9 +72,11 @@ export function NewPostForm({ setShow, post }) {
         if (!editing) {
             savePostLocalStorage(post);
             addPost(post);
+            displayToast(`"${post.title}" submitted`);
         } else {
             updatePostLocalStorage(post);
             updatePost(post.id, post);
+            displayToast("Edit successful");
         }
         toggleShow();
     }

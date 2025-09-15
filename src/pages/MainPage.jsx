@@ -5,8 +5,9 @@ import "../styles/MainPage.css"
 import { NewsList } from "../components/NewsList";
 import { Button } from "@headlessui/react";
 import { NewPostForm } from "../components/PostForm";
-import { adminStore, postsStore } from "../App";
+import { adminStore, postsStore, toastsStore } from "../App";
 import { getNewsFromStorage } from "../api/posts";
+import { Toasts } from "../components/Toasts";
 
 const featuredArticle = {
   title: "Spirit win Blast Open London 2025",
@@ -21,6 +22,8 @@ export function MainPage() {
 
   const posts = postsStore((state) => state.posts);
   const setPosts = postsStore((state) => state.setPosts);
+
+  const toasts = toastsStore((state) => state.toasts);
 
   useEffect(() => {
     setPosts(getNewsFromStorage());
@@ -46,6 +49,7 @@ export function MainPage() {
       }
 
       <NewsList news={posts} />
+      <Toasts toasts={toasts} />
 
       {show && <NewPostForm setShow={setShow}/>}
     </>
