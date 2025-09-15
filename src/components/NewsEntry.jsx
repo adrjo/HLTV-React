@@ -2,11 +2,11 @@ import { Link } from "react-router";
 import "../styles/NewsEntry.css"
 import { displayToast, getElapsedTimeFormatted } from "../util/Util";
 import { Button } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NewPostForm } from "./PostForm";
 import { ConfirmScreen } from "./ConfirmScreen";
 import { postsStore } from "../App";
-import { removePostLocalStorage } from "../api/posts";
+import { getLikeObj, removePostLocalStorage } from "../api/posts";
 
 
 
@@ -14,6 +14,12 @@ export function NewsEntry({ entry, editable }) {
     const [showForm, setShow] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
     const removePost = postsStore((state) => state.removePost);
+
+    const [likes, setLikes] = useState(0);
+
+    useEffect(() => {
+        setLikes(getLikeObj(entry.id).amount);
+    }, [])
 
     const id = entry.id;
     const dateObj = new Date(entry.date);
@@ -57,8 +63,8 @@ export function NewsEntry({ entry, editable }) {
                 }
             </h2>
             <div className="news-info m-auto mr-0 text-xs">
-                <div className="comments">5 comments</div>
-                <div className="date">{formattedDate}</div>
+                <div name="likes">{likes} likes</div>
+                <div name="date">{formattedDate}</div>
             </div>
         </>
     )
