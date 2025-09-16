@@ -22,7 +22,7 @@ export async function apiFetchComments(amtComments) {
 }
 
 export async function fetchRandomArticles() {
-  const response = await fetch("https://gist.githubusercontent.com/adrjo/e25720ae487da58c4613b1f442095d96/raw/8b2f31efcb6c44b51c379846e8477acea215fe5c/hltv.json");
+  const response = await fetch("https://gist.githubusercontent.com/adrjo/e25720ae487da58c4613b1f442095d96/raw/d876d6e0492b5735487b98f1153fa6c347f69dd5/hltv.json");
 
   const articles = await response.json();
   return articles;
