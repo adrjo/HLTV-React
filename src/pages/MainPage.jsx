@@ -12,19 +12,13 @@ import { fetchRandomArticles } from "../api/api";
 import { Flag } from "../util/Flag";
 import { savePosts } from "../api/posts";
 
-const featuredArticle = {
-  title: "Spirit win Blast Open London 2025",
-  img: "https://img-cdn.hltv.org/gallerypicture/9-jXDp3QMajFwZ0YckD_qe.jpg?auto=compress&ixlib=java-2.1.0&q=75&s=a715c020af2fedf5dc2517c050b5b66f",
-  id: 1
-};
-
 export function MainPage() {
   const adminMode = adminStore((state) => state.adminModeToggled);
 
   const posts = postsStore((state) => state.posts);
   const setPosts = postsStore((state) => state.setPosts);
 
-  const [article, setFeaturedArticle] = useState(featuredArticle);
+  const [article, setFeaturedArticle] = useState();
 
   const toasts = toastsStore((state) => state.toasts);
 
