@@ -20,3 +20,10 @@ export async function apiFetchComments(amtComments) {
   const comments = await response.json();
   return comments.comments;
 }
+
+export async function fetchRandomArticles() {
+  const response = await fetch("https://gist.githubusercontent.com/adrjo/e25720ae487da58c4613b1f442095d96/raw/8b2f31efcb6c44b51c379846e8477acea215fe5c/hltv.json");
+
+  const articles = await response.json();
+  return articles;
+}

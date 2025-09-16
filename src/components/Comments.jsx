@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiFetchComments } from "../api/comments";
+import { apiFetchComments } from "../api/api";
 import { getRandomNumber } from "../util/Util";
 
 

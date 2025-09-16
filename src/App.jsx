@@ -3,7 +3,6 @@ import { MainPage } from "./pages/MainPage";
 import { ForumPage } from "./pages/ForumPage";
 import { create } from "zustand";
 import { ArticlePage } from "./pages/ArticlePage";
-import { useEffect } from "react";
 import { getNewsFromStorage } from "./api/posts";
 
 export const adminStore = create((set) => (

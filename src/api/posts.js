@@ -8,7 +8,7 @@ export function savePostLocalStorage(post) {
     savePosts(posts);
 }
 
-function savePosts(posts) {
+export function savePosts(posts) {
     localStorage.setItem("posts", JSON.stringify(posts));
 }
 

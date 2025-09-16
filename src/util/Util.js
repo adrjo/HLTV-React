@@ -51,3 +51,15 @@ export function displayToast(message, isError = false, timeSeconds = 5) {
     removeToast(newToast.id);
   }, timeSeconds * 1000)
 }
+
+
+const weekMs = 7 * 24 * 60 * 60 * 1000;
+export function selectFeaturedArticle(posts, setFeaturedArticle) {
+  let options = posts
+    .filter(post => post.img != undefined && post.img != "")
+    .filter(post => Date.now() - post.date < weekMs); // featured article shouldnt be too old
+
+  if (options.length != 0) {
+    setFeaturedArticle(options[getRandomNumber(0, options.length - 1)]);
+  }
+}
