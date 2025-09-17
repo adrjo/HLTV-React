@@ -5,8 +5,8 @@ import { FlagSelect } from "./FlagSelect.jsx";
 import { Flag } from "../util/Flag.js";
 import { displayToast, isNullOrEmpty } from "../util/Util.js";
 import { savePostLocalStorage, updatePostLocalStorage } from "../api/posts.js";
-import { postsStore } from "../App.jsx";
 import { DarkBackground } from "./DarkBackground.jsx";
+import { postsStore } from "../store/stores.js";
 
 
 export function NewPostForm({ setShow, post }) {

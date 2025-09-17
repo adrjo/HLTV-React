@@ -1,4 +1,4 @@
-import { toastsStore } from "../App";
+import { toastsStore } from "../store/stores";
 
 export function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

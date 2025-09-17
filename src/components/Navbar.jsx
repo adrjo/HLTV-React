@@ -1,5 +1,5 @@
 import { Field, Label, Switch } from "@headlessui/react";
-import { adminStore } from "../App";
+import { adminStore } from "../store/stores";
 import "../styles/Navbar.css"
 
 export function Navbar() {

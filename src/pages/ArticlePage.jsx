@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { postsStore } from "../App";
+import { postsStore } from "../store/stores";
 import { Navbar } from "../components/Navbar";
 import { Article } from "../components/Article";
 import { FeedbackSection } from "../components/FeedbackSection";

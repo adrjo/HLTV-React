@@ -5,7 +5,7 @@ import "../styles/MainPage.css"
 import { NewsList } from "../components/NewsList";
 import { Button } from "@headlessui/react";
 import { NewPostForm } from "../components/PostForm";
-import { adminStore, postsStore, toastsStore } from "../App";
+import { adminStore, postsStore, toastsStore } from "../store/stores";
 import { Toasts } from "../components/Toasts";
 import { selectFeaturedArticle } from "../util/Util";
 import { fetchRandomArticles } from "../api/api";

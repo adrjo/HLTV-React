@@ -1,4 +1,4 @@
-import { adminStore } from "../App";
+import { adminStore } from "../store/stores";
 import { NewsEntry } from "./NewsEntry";
 
 export function NewsList({ news }) {

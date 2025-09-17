@@ -1,6 +1,7 @@
 import { Select } from "@headlessui/react"
 import { Flag } from "../util/Flag"
 
+// country flag selection component (used in PostForm)
 export function FlagSelect({ flag, setFlag }) {
     const selectFlag = (code) => {
         const flag = Object.values(Flag).find((f) => f.code === code)

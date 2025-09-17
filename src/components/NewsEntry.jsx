@@ -5,7 +5,7 @@ import { Button } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { NewPostForm } from "./PostForm";
 import { ConfirmScreen } from "./ConfirmScreen";
-import { postsStore } from "../App";
+import { postsStore } from "../store/stores";
 import { getLikeObj, removePostLocalStorage } from "../api/posts";
 
 
